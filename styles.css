@@ -1,0 +1,11 @@
+@import "https://fonts.googleapis.com/css?family=Varela+Round";
+
+body {
+  font-family: 'Varela Round', sans-serif;
+  align: right;
+  direction: rtl;
+}
+
+#time {
+  direction: ltr;
+}

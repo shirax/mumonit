@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <title>מו"מונית</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js"></script>
+</head>
+
+<body>
+  <h1>חישוב עלויות נסיעה במונית ספיישל</h1>
+  <small>עודכן לאחרונה ב-19/12/2016</small>
+  <small>מבוסס על המידע מ<a href="http://he.mot.gov.il/index.php?option=com_content&view=article&id=519:mehiron-moniyot&catid=82:2010-04-14-07-13-28&Itemid=118">אתר משרד התחבורה</a>
+  <ul>
+    <li>
+      <h4>תעריף הנסיעה</h4>
+      <select name="tarif" id="tarif">
+        <option selected="selected">
+          1
+        </option>
+        <option>
+          2
+        </option>
+      </select>
+    </li>
+    <li>
+      <h4>מרחק הנסיעה</h4>
+      <input type="text" id="distance" name="distance" value="0.0" />
+    </li>
+    <li>
+      <h4>משך הנסיעה</h4>
+      <div  id="time">
+        <span>שעות</span><span>דקות</span><span>שניות</span>
+        <br/>
+        <input type="number" id="duration_hours" name="duration_hours" min="0" max="10" value="00" />
+        <input type="number" id="duration_minutes" name="duration_minutes" min="0" max="59" value="00" />
+        <input type="number" id="duration_seconds" name="duration_seconds" min="0" max="59" value="00" />
+      </div>
+    </li>
+  </ul>
+  <button onclick="calculatePrice()">חישוב</button>
+  <div id="price"></div>
+</body>
+</html>
