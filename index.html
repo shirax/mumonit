@@ -12,8 +12,7 @@
   <h1>חישוב עלויות נסיעה במונית ספיישל</h1>
   <small>עודכן לאחרונה ב-19/12/2016</small>
   <small>מבוסס על המידע מ<a href="http://he.mot.gov.il/index.php?option=com_content&view=article&id=519:mehiron-moniyot&catid=82:2010-04-14-07-13-28&Itemid=118">אתר משרד התחבורה</a>
-  <ul>
-    <li>
+    <section id="tarif-section">
       <h4>תעריף הנסיעה</h4>
       <select name="tarif" id="tarif">
         <option selected="selected">
@@ -23,12 +22,12 @@
           2
         </option>
       </select>
-    </li>
-    <li>
+    </section>
+    <section id="distance-section">
       <h4>מרחק הנסיעה</h4>
       <input type="text" id="distance" name="distance" value="0.0" />
-    </li>
-    <li>
+    </section>
+    <section id="time-section">
       <h4>משך הנסיעה</h4>
       <table id="time">
   <tr>
@@ -43,8 +42,7 @@
   </tr>
   </td>
 </table>
-    </li>
-  </ul>
+    </section>
   <button onclick="calculatePrice()">חישוב</button>
   <div id="price"></div>
 </body>
