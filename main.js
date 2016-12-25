@@ -35,8 +35,12 @@ function calculatePrice() {
   var time_beat_every_x_seconds = TARIF[tarif]['time_beat_every_x_seconds'];
 
   var duration = hours * 3600 + minutes * 60 + seconds;
-  duration = duration - included_seconds;
-  var duration_beats = duration / time_beat_every_x_seconds;
+  if (duration > included_seconds) {
+    duration = duration - included_seconds;
+    var duration_beats = duration / time_beat_every_x_seconds;
+  } else {
+    duration_beats = 0;
+  }
 
   distance = distance * 1000;
   if (distance > 15000) {
@@ -46,10 +50,12 @@ function calculatePrice() {
     var d1 = distance;
     var d2 = 0;
   }
-
-  d1 = d1 - included_meters;
-
-  var distance_beats = d1 / distance_beat_until_15km + d2 / distance_beat_above_15km;
+  if (d1 > included_meters) {
+    d1 = d1 - included_meters;
+    var distance_beats = d1 / distance_beat_until_15km + d2 / distance_beat_above_15km;
+  } else {
+    distance_beats = 0;
+  }
 
   var beats = distance_beats + duration_beats;
   var price = initial_price + beats * 0.3;
