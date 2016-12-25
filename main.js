@@ -15,7 +15,7 @@ TARIF = {
     'time_beat_every_x_seconds': 10
   },
 }
-
+document.getElementById("calc-btn").onclick = function() {calculatePrice()};
 function calculatePrice() {
   var tarif = document.getElementById('tarif')
     .value;
@@ -63,4 +63,4 @@ function calculatePrice() {
 
   var priceDiv = document.getElementById('price');
   priceDiv.innerHTML = '<h2>עלות הנסיעה בש"ח</h2>' + price
-}
+};
