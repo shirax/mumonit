@@ -34,9 +34,6 @@ function calculatePrice() {
   var distance_beat_above_15km = TARIF[tarif]['distance_beat_above_15km'];
   var time_beat_every_x_seconds = TARIF[tarif]['time_beat_every_x_seconds'];
 
-  console.log(included_seconds, included_meters);
-  console.log(hours, minutes, seconds);
-
   var duration = hours * 3600 + minutes * 60 + seconds;
   duration = duration - included_seconds;
   var duration_beats = duration / time_beat_every_x_seconds;
