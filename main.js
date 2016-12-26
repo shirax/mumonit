@@ -1,45 +1,45 @@
-initial_price = 11.0;
+initialPrice = 11.0;
 TARIF = {
   '1': {
-    'included_seconds': 80,
-    'included_meters': 537.93,
-    'distance_beat_until_15km': 87.32,
-    'distance_beat_above_15km': 72.82,
-    'time_beat_every_x_seconds': 12
+    'includedSeconds': 80,
+    'includedMeters': 537.93,
+    'distanceBeatUntil15km': 87.32,
+    'distanceBeatAbove15km': 72.82,
+    'timeBeatEveryXSeconds': 12
   },
   '2': {
-    'included_seconds': 35,
-    'included_meters': 147.89,
-    'distance_beat_until_15km': 69.87,
-    'distance_beat_above_15km': 58.17,
-    'time_beat_every_x_seconds': 10
+    'includedSeconds': 35,
+    'includedMeters': 147.89,
+    'distanceBeatUntil15km': 69.87,
+    'distanceBeatAbove15km': 58.17,
+    'timeBeatEveryXSeconds': 10
   },
 }
 document.getElementById("calc-btn").onclick = function() {calculatePrice()};
 function calculatePrice() {
   var tarif = document.getElementById('tarif')
     .value;
-  var hours = parseInt(document.getElementById('duration_hours')
+  var hours = parseInt(document.getElementById('duration-hours')
     .value);
-  var minutes = parseInt(document.getElementById('duration_minutes')
+  var minutes = parseInt(document.getElementById('duration-minutes')
     .value);
-  var seconds = parseInt(document.getElementById('duration_seconds')
+  var seconds = parseInt(document.getElementById('duration-seconds')
     .value);
   var distance = parseFloat(document.getElementById('distance')
     .value);
 
-  var included_seconds = TARIF[tarif]['included_seconds'];
-  var included_meters = TARIF[tarif]['included_meters'];
-  var distance_beat_until_15km = TARIF[tarif]['distance_beat_until_15km'];
-  var distance_beat_above_15km = TARIF[tarif]['distance_beat_above_15km'];
-  var time_beat_every_x_seconds = TARIF[tarif]['time_beat_every_x_seconds'];
+  var includedSeconds = TARIF[tarif]['includedSeconds'];
+  var includedMeters = TARIF[tarif]['includedMeters'];
+  var distanceBeatUntil15km = TARIF[tarif]['distanceBeatUntil15km'];
+  var distanceBeatAbove15km = TARIF[tarif]['distanceBeatAbove15km'];
+  var timeBeatEveryXSeconds = TARIF[tarif]['timeBeatEveryXSeconds'];
 
   var duration = hours * 3600 + minutes * 60 + seconds;
-  if (duration > included_seconds) {
-    duration = duration - included_seconds;
-    var duration_beats = duration / time_beat_every_x_seconds;
+  if (duration > includedSeconds) {
+    duration = duration - includedSeconds;
+    var durationBeats = duration / timeBeatEveryXSeconds;
   } else {
-    duration_beats = 0;
+    durationBeats = 0;
   }
 
   distance = distance * 1000;
@@ -50,15 +50,15 @@ function calculatePrice() {
     var d1 = distance;
     var d2 = 0;
   }
-  if (d1 > included_meters) {
-    d1 = d1 - included_meters;
-    var distance_beats = d1 / distance_beat_until_15km + d2 / distance_beat_above_15km;
+  if (d1 > includedMeters) {
+    d1 = d1 - includedMeters;
+    var distanceBeats = d1 / distanceBeatUntil15km + d2 / distanceBeatAbove15km;
   } else {
-    distance_beats = 0;
+    distanceBeats = 0;
   }
 
-  var beats = distance_beats + duration_beats;
-  var price = initial_price + beats * 0.3;
+  var beats = distanceBeats + durationBeats;
+  var price = initialPrice + beats * 0.3;
   price = price.toFixed(2);
 
   var priceDiv = document.getElementById('price');
